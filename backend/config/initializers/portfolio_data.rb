@@ -1,5 +1,4 @@
 # Portfolio data configuration
-# This file contains all the portfolio information that can be easily updated
 
 PORTFOLIO_DATA = {
   name: "Azlan Ali Khan",
@@ -52,9 +51,9 @@ PORTFOLIO_DATA = {
       OtherTools: ["Git", "Docker", "Vercel", "Ollama"],
       OtherLibs: ["Go Network Programming", "ImGUI", "Tkinter", "Python WebSockets", "Pandas", "Matplotlib", "Numpy"],
       
-      Testing: ["Jest", "Catch2"],
+      Testing: ["Jest", "Catch2"], #Catch2 used in Game Engine Tests, Jest used for Web
       OperatingSystems: ["Windows", "Linux (Parrot OS, Kali Linux, Void Linux, NixOS, Ubuntu)", "Armbian"],
-      DataBases: ["MongoDB", "PostgreSQL"], #I am using Supabase which uses PostgreSQL 
+      DataBases: ["MongoDB", "PostgreSQL", "SupaBase"], #Used SupaBase with this project 
       DataScience: ["Pandas", "Matplotlib", "Numpy"], #Was using them to check out NBA Related data and to visualize said data
     
     },
@@ -67,7 +66,6 @@ PORTFOLIO_DATA = {
       issuer: "Google",
       link: "https://coursera.org/share/4a9d809766248f2a822540bd36501315",
       img: "https://knaboexruuzzhyzurvuq.supabase.co/storage/v1/object/public/portfolioimages/googleseccert.png"
-      # Having the link seems alright but we also just want an image to keep things simple
     },
   ],
   projects: [
@@ -78,14 +76,6 @@ PORTFOLIO_DATA = {
       description: "Was my Fundamentals of Software Engineering Project where I single wrote a Bus Transport Website",
       link: "https://github.com/slick-user/FSE-Final-Project",
       img: "https://knaboexruuzzhyzurvuq.supabase.co/storage/v1/object/public/portfolioimages/UTBS%20Landing%20Page.png",
-      gif: "",
-    },
-    # Separate my Toy Projects with more serious ones that matter more
-    {
-      title: "Space Shifters",
-      description: "Video Game My brother and I made in 2019",
-      link: "https://cluster.itch.io/space-shifters",
-      img: "https://knaboexruuzzhyzurvuq.supabase.co/storage/v1/object/public/portfolioimages/spaceshifters.png", 
       gif: "",
     },
     {
@@ -121,27 +111,27 @@ PORTFOLIO_DATA = {
       gif: "",
     },
     {
+      title: "PF Project",
+      description: "My PF project",
+      link: "https://github.com/slick-user/PF-Project",
+      img: "",
+      gif: "",
+    },
+    {
       title: "Open GL 3D Adventure",
       description: "Some experiments with OpenGL",
       link: "https://github.com/slick-user/OpenGL-Graphics-Programming-Adventures",
       img: "",
       gif: "https://github.com/user-attachments/assets/65f8bcd4-05fa-450b-ac42-3247d0bb036d",
     },
+    # Separate my Toy Projects with more serious ones that matter more
     {
-      title: "PF Project",
-      description: "My PF project",
-      link: "",
-      img: "",
+      title: "Space Shifters",
+      description: "Video Game My brother and I made in 2019",
+      link: "https://cluster.itch.io/space-shifters",
+      img: "https://knaboexruuzzhyzurvuq.supabase.co/storage/v1/object/public/portfolioimages/spaceshifters.png", 
       gif: "",
     },
 
-    #{
-      # I won't showcase this here I might show it somewhere else in the website
-      #title: "Drive and Gun",
-      #description: "A very old game I made in 2018 in Construct 2",
-      #link: "https://cluster.itch.io/drive-n-gun",
-      #img: "",
-      #gif: "",
-    #},
   ],
 }.freeze

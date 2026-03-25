@@ -1,0 +1,50 @@
+<section class="mt-12">
+  <h2 class="text-3xl font-bold mb-6 text-center">
+    Skills & Technologies
+  </h2>
+
+  <div class="grid lg:grid-cols-2 gap-8 mt-6">
+    <div class="space-y-6">
+      <div class="p-6 rounded-lg top-24">
+        <h3 class="text-2xl font-bold mb-4 text-center">
+          Skills
+        </h3>
+      </div>
+      <% skills.except(:Technologies).each do |category, value| %>
+        <div class="bg-gray-50 p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 capitalize">
+            <%= category.to_s.tr("_", " ") %>
+          </h3>
+          <% if value.is_a?(Array) %>
+            <div class="flex flex-wrap gap-2">
+              <% value.each do |item| %>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"><%= item %></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="space-y-6">
+      <div class="p-6 rounded-lg sticky top-24">
+        <h3 class="text-2xl font-bold mb-4 text-center">
+          Technologies
+        </h3>
+        <% technologies = skills[:Technologies] || {} %>
+        <% technologies.each do |sub_category, items| %>
+          <div>
+            <h4 class="text-md font-semibold mb-2 text-gray-700">
+              <%= technologies_subheading(sub_category) %>
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              <% Array(items).each do |item| %>
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium"><%= item %></span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

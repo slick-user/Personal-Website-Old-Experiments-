@@ -1,4 +1,40 @@
-<div id="portfolio-root"></div>
-<script type="application/json" id="portfolio-data">
-  <%= @portfolio_data.to_json.html_safe %>
-</script>
+<% content_for :title, @portfolio[:name] %>
+
+<!-- Portfolio Page -->
+<div class="min-h-screen py-8">
+
+  <!-- Will have a nav bar or the like (design pending) -->
+  <header>
+  </header>
+
+  <!-- Intro Banner -->
+  <div class="text-center py-11 px-4">
+    <h1 class="text-6xl font-bold mb-4 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+      <%= @portfolio[:name] %>
+    </h1>
+    <p class="text-2xl font-semibold text-orange-500 mb-6"><%= @portfolio[:title] %></p>
+    <p class="text-lg text-horizon1 max-w-2xl mx-auto mb-8"><%= @portfolio[:bio] %></p>
+    <%= render "social_links", links: @portfolio[:social_links] %>
+  </div>
+
+  <!-- Portfolio Page Sections -->
+  <div class="px-4">
+    <%= render "projects_section", projects: @portfolio[:projects] %>
+  </div>
+
+  <div class="px-4">
+    <%= render "skills_section", skills: @portfolio[:skills] %>
+  </div>
+
+  <div class="px-4">
+    <%= render "education", education: @portfolio[:education] %>
+  </div>
+
+  <div class="px-4">
+    <%= render "certifications", certifications: @portfolio[:certifications] %>
+  </div>
+
+  <footer class="mt-16 py-8 text-center text-gray-600">
+    <p>© <%= Time.current.year %> <%= @portfolio[:name] %>. All rights reserved.</p>
+  </footer>
+</div>

@@ -8,3 +8,12 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+* {
+  cursor: none !important;
+}
+
+::selection {
+  background-color: blanchedalmond;
+  color: coral;
+}

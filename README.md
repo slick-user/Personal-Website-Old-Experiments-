@@ -1,124 +1,51 @@
 # Portfolio Website
 
-A modern portfolio website built with React (frontend) and Ruby on Rails (backend API).
+A portfolio site built as a single **Ruby on Rails** app (ERB views, Hotwire/Stimulus, Tailwind CSS). Portfolio content lives in `backend/config/initializers/portfolio_data.rb`.
 
-## Project Structure
+## Project structure
 
 ```
 .
-├── backend/          # Rails API server
-├── frontend/         # React + Vite frontend
-└── Procfile.dev     # Development process configuration
+├── backend/           # Rails app (server-rendered UI + assets)
+├── Procfile.dev      # Foreman: Rails + Tailwind watcher
+└── start-dev.ps1     # Windows: same processes in separate windows
 ```
 
 ## Setup
 
-### Backend (Rails)
+local DB settings live in **`config/database.yml`**
 
-1. Navigate to the backend directory:
+1. `cd backend` and `bundle install`.
+2. Create the databases and run migrations (Rails reads names from `database.yml`):
    ```bash
-   cd backend
+   bin/rails db:create
+   bin/rails db:migrate
    ```
-
-2. Install Ruby dependencies:
-   ```bash
-   bundle install
-   ```
-
-3. Set up the database (if needed):
-   ```bash
-   rails db:create db:migrate
-   ```
-
-4. Update your portfolio data in `backend/config/initializers/portfolio_data.rb`
-
-### Frontend (React)
-
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-
-2. Install Node.js dependencies:
-   ```bash
-   npm install
-   ```
+   Or in one step: `bin/rails db:prepare`.
+3. **Windows:** If Postgres rejects the connection, add under `development` in `database.yml` the `username` / `password` lines shown in the comments there (or set `POSTGRES_PASSWORD` for **test** only if you run tests with a passworded role).
 
 ## Development
 
-### Option 1: Run everything with startup scripts (Recommended)
+From `backend`:
 
-**Windows:**
-```powershell
-# PowerShell
-.\start-dev.ps1
-
-# Or Command Prompt
-start-dev.bat
-```
-
-**Mac/Linux:**
 ```bash
-foreman start -f Procfile.dev
+bin/dev
 ```
 
-This will start:
-- Rails server on `http://localhost:3001`
-- Vite dev server on `http://localhost:3000`
-- Tailwind CSS watcher
+Or from the repo root on Windows: `.\start-dev.ps1` or `start-dev.bat`.
 
-### Option 2: Run separately
+Open **http://localhost:3000** (Rails + Tailwind watch).
 
-**Terminal 1 - Rails API:**
+## Production
+
 ```bash
 cd backend
-rails server -p 3001
+bin/rails assets:precompile
+RAILS_ENV=production bin/rails server
 ```
 
-**Terminal 2 - React Frontend:**
-```bash
-cd frontend
-npm run dev
-```
+## Tech stack
 
-Then visit `http://localhost:3000` in your browser.
-
-## Production Build
-
-1. Build the frontend:
-   ```bash
-   cd frontend
-   npm run build
-   ```
-
-   This will build the React app into `backend/public/`
-
-2. Start Rails server:
-   ```bash
-   cd backend
-   rails server
-   ```
-
-   Rails will serve the built React app from the public folder.
-
-## Customizing Your Portfolio
-
-Edit `backend/config/initializers/portfolio_data.rb` to update:
-- Your name, title, and bio
-- Social media links (LinkedIn, GitHub, Itch.io, YouTube, HackTheBox)
-- Skills and technologies
-- Education information
-- Tech stack
-
-After making changes, restart the Rails server.
-
-## API Endpoints
-
-- `GET /api/portfolio` - Returns portfolio data as JSON
-
-## Tech Stack
-
-- **Frontend**: React 19, Vite, Tailwind CSS
-- **Backend**: Ruby on Rails 8.1, PostgreSQL
-- **Styling**: Tailwind CSS
-
+- Ruby on Rails 8.1, PostgreSQL  
+- Turbo, Stimulus, importmap  
+- Tailwind CSS (tailwindcss-rails)

@@ -23,7 +23,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-50">
+  <body
+    class="bg-gray-50 portfolio-cursor-none antialiased"
+    data-controller="cursor-glow"
+    data-cursor-glow-default-src-value="/icon.png"
+    data-cursor-glow-hover-src-value="/icon.png"
+  >
+    <div data-cursor-glow-target="glow" class="pointer-events-none fixed inset-0 z-30" aria-hidden="true"></div>
+    <div data-cursor-glow-target="cursor" class="pointer-events-none fixed top-0 left-0 z-50 will-change-[transform,width,height]" aria-hidden="true">
+      <img
+        data-cursor-glow-target="cursorImage"
+        alt=""
+        class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(250,92,92,0.8)]"
+        width="64"
+        height="64"
+      >
+    </div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <%= yield %>
     </div>
