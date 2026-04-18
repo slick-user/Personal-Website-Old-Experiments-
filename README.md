@@ -13,16 +13,14 @@ A portfolio site built as a single **Ruby on Rails** app (ERB views, Hotwire/Sti
 
 ## Setup
 
-local DB settings live in **`config/database.yml`**
-
-1. `cd backend` and `bundle install`.
-2. Create the databases and run migrations (Rails reads names from `database.yml`):
+1. Install PostgreSQL locally and ensure the service is running (default port **5432**).
+2. `cd backend` and run `bundle install`.
+3. **Local database only:** If you still have a hosted `DATABASE_URL` in your environment (for example in `.env` from Supabase or Neon), remove that line or comment it out. The app clears `DATABASE_URL` in development/test so `config/database.yml` is used (localhost, user `postgres`, no password by default). If your install requires a password, set `POSTGRES_PASSWORD` in `.env` or use Windows PostgreSQL defaults.
+4. Create the database and schema:
    ```bash
-   bin/rails db:create
-   bin/rails db:migrate
+   bin/rails db:prepare
    ```
-   Or in one step: `bin/rails db:prepare`.
-3. **Windows:** If Postgres rejects the connection, add under `development` in `database.yml` the `username` / `password` lines shown in the comments there (or set `POSTGRES_PASSWORD` for **test** only if you run tests with a passworded role).
+5. Optional: add `public/popcat.png`, `public/popcatopen.png`, and `public/nuces.png` for the custom cursor and education logo.
 
 ## Development
 
@@ -43,6 +41,10 @@ cd backend
 bin/rails assets:precompile
 RAILS_ENV=production bin/rails server
 ```
+
+## Customizing content
+
+Edit `backend/config/initializers/portfolio_data.rb`, then restart the server.
 
 ## Tech stack
 

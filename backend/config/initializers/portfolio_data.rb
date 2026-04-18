@@ -47,7 +47,7 @@ PORTFOLIO_DATA = {
       # I want to use Anime JS and Three JS with this website
       WebDev: ["Ruby on Rails", "HTMX", "React", "Express JS", "Node JS", "Bun", "Tailwind", "Bootstrap", "Flask", "Go Network Programming", "Python WebSockets"],
       GameDevelopent: ["Godot", "SDL", "OpenGL", "SFML", "Raylib", "Construct 2", "PyGame", "Game Maker"],
-      Security: ["Burpsuite", "Pwndbg", "IDA", "Nmap", "Metasploit", "SQLMap", "John the Ripper", "Wireshark"],
+      Security: ["Burpsuite", "Pwndbg", "Cutter", "x64dbg", "Nmap", "Metasploit", "SQLMap", "John the Ripper", "Wireshark"],
       OtherTools: ["Git", "Docker", "Vercel", "Ollama"],
       OtherLibs: ["Go Network Programming", "ImGUI", "Tkinter", "Python WebSockets", "Pandas", "Matplotlib", "Numpy"],
       
